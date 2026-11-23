@@ -1,0 +1,7 @@
+{
+  "name": "VandiCash-AP3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
