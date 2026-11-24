@@ -1,0 +1,103 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="principal" aria-label="Abrir menú"></ion-menu-button>
+      <span class="toolbar-brand"><span class="brand-vandi">vandi</span><span class="brand-cash">cash</span></span>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle"
+      pullingText="Desliza para restablecer"
+      refreshingSpinner="crescent"
+      refreshingText="Restableciendo...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <p class="eyebrow">SIMULADOR</p>
+      <h1>Hagamos números</h1>
+      <p>Una simulación, sin compromiso.</p>
+    </section>
+
+    <ion-list class="simulator-list" lines="none">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <span class="field-label">¿CUÁNTO NECESITAS?</span>
+          <strong class="amount">RD$ {{ monto | number:'1.0-0' }}</strong>
+          <ion-range
+            aria-label="Monto del préstamo"
+            min="5000"
+            max="50000"
+            step="1000"
+            [(ngModel)]="monto">
+          </ion-range>
+          <div class="range-labels"><span>RD$ 5,000</span><span>RD$ 50,000</span></div>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <span class="field-label">PLAZO Y FRECUENCIA</span>
+          <div class="choice-row">
+            <ion-button size="small" shape="round" [fill]="plazo === 3 ? 'solid' : 'outline'" (click)="seleccionarPlazo(3)">3 meses</ion-button>
+            <ion-button size="small" shape="round" [fill]="plazo === 6 ? 'solid' : 'outline'" (click)="seleccionarPlazo(6)">6 meses</ion-button>
+            <ion-button size="small" shape="round" [fill]="plazo === 12 ? 'solid' : 'outline'" (click)="seleccionarPlazo(12)">12 meses</ion-button>
+          </div>
+          <div class="choice-row two">
+            <ion-button size="small" shape="round" [fill]="frecuencia === 'Quincenal' ? 'solid' : 'outline'" (click)="seleccionarFrecuencia('Quincenal')">Quincenal</ion-button>
+            <ion-button size="small" shape="round" [fill]="frecuencia === 'Mensual' ? 'solid' : 'outline'" (click)="seleccionarFrecuencia('Mensual')">Mensual</ion-button>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-card class="estimate-card">
+      <ion-card-header>
+        <ion-card-subtitle>Tu cuota estimada</ion-card-subtitle>
+        <ion-card-title>RD$ {{ cuota | number:'1.2-2' }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ frecuencia === 'Quincenal' ? plazo * 2 : plazo }} cuotas · Total ilustrativo RD$ {{ total | number:'1.0-0' }}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button class="primary-action" expand="block" (click)="continuar()">
+      Continuar con este plan
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+    <p class="academic-note">Ejemplo académico. Montos y condiciones son ilustrativos.</p>
+  </main>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="page-fab">
+    <ion-fab-button size="small" aria-label="Acciones del simulador">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light" aria-label="Restablecer simulación" (click)="restablecer()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" aria-label="Aceptar simulación" (click)="continuar()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/simulador" selected="true">
+      <ion-icon name="calculator-outline"></ion-icon><ion-label>Simulador</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/prestamo">
+      <ion-icon name="document-text-outline"></ion-icon><ion-label>Préstamo</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/avisos">
+      <ion-icon name="notifications-outline"></ion-icon><ion-label>Avisos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

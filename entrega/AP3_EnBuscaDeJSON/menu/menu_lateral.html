@@ -1,0 +1,47 @@
+<ion-app>
+  <ion-split-pane contentId="main-content" when="(min-width: 992px)">
+    <ion-menu contentId="main-content" menuId="principal" type="overlay">
+      <ion-header>
+        <ion-toolbar class="menu-toolbar">
+          <ion-title>
+            <span class="brand-vandi">vandi</span><span class="brand-cash">cash</span>
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="menu-content">
+        <div class="menu-intro">
+          <div class="menu-logo" aria-hidden="true">VC</div>
+          <div>
+            <strong>En busca de JSON</strong>
+            <p>Proyecto universitario</p>
+          </div>
+        </div>
+
+        <ion-list lines="none">
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/simulador" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="calculator-outline"></ion-icon>
+              <ion-label>Hagamos números</ion-label>
+            </ion-item>
+            <ion-item routerLink="/prestamo" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="document-text-outline"></ion-icon>
+              <ion-label>Mi préstamo</ion-label>
+            </ion-item>
+            <ion-item routerLink="/avisos" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="notifications-outline"></ion-icon>
+              <ion-label>Tus avisos</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <div class="team-note">
+          <ion-icon name="people-outline"></ion-icon>
+          <span>Yamely · Robinet · Winston</span>
+        </div>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

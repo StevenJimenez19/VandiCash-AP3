@@ -1,0 +1,117 @@
+.balance-card {
+  --background: #e8f1df;
+  margin: 22px 0 26px;
+  border-radius: 22px;
+  box-shadow: none;
+
+  ion-card-title {
+    margin-top: 6px;
+    color: #17352f;
+    font-size: 2rem;
+  }
+}
+
+.schedule-section h2 {
+  margin: 0;
+  color: #17352f;
+  font-size: 1.35rem;
+}
+
+.gesture-hint {
+  margin: 6px 0 12px;
+  color: #71817b;
+  font-size: 0.75rem;
+}
+
+ion-list {
+  background: transparent;
+}
+
+.payment-item {
+  --background: #fff;
+  --border-radius: 18px;
+  --min-height: 74px;
+  --padding-start: 14px;
+  --inner-padding-end: 14px;
+  margin-bottom: 10px;
+
+  h3 {
+    color: #17352f;
+    font-size: 0.9rem;
+  }
+
+  p {
+    color: #81908b;
+    font-size: 0.74rem;
+  }
+}
+
+.long-press-target {
+  outline: 2px dashed transparent;
+  outline-offset: -4px;
+}
+
+.payment-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 13px;
+  background: #eaf2e5;
+  color: #17785d;
+
+  &[data-state='Próxima'], &[data-state='Pendiente'] {
+    color: #3865dc;
+  }
+}
+
+ion-note {
+  font-size: 0.75rem;
+
+  &[data-state='Pagada'] { color: #17785d; }
+  &[data-state='Próxima'], &[data-state='Pendiente'] { color: #3865dc; }
+}
+
+.receipt-card {
+  margin: 22px 0 72px;
+  border-radius: 22px;
+  box-shadow: none;
+}
+
+.receipt-viewport {
+  display: grid;
+  height: 190px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #dfe7df;
+  border-radius: 16px;
+  background: #f4f7f2;
+  touch-action: none;
+
+  img {
+    width: 150px;
+    max-width: none;
+    transform-origin: center;
+    transition: transform 80ms linear;
+    user-select: none;
+  }
+}
+
+.zoom-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  color: #71817b;
+  font-size: 0.72rem;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.page-fab {
+  margin-bottom: 68px;
+}

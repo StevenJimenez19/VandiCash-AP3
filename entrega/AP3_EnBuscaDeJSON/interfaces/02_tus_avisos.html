@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="principal" aria-label="Abrir menú"></ion-menu-button>
+      <span class="toolbar-brand"><span class="brand-vandi">vandi</span><span class="brand-cash">cash</span></span>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle"
+      pullingText="Desliza para actualizar"
+      refreshingSpinner="crescent"
+      refreshingText="Actualizando avisos...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <p class="eyebrow">NOTIFICACIONES</p>
+      <h1>Tus avisos</h1>
+      <p>Las novedades que sí importan.</p>
+    </section>
+
+    <div class="gesture-hint">
+      <ion-icon name="swap-horizontal-outline"></ion-icon>
+      Desliza un aviso hacia la izquierda para eliminarlo
+    </div>
+
+    <ng-container *ngFor="let grupo of ['Hoy', 'Anteriores']">
+      <section *ngIf="porGrupo($any(grupo)).length" class="notice-group">
+        <h2>{{ grupo }}</h2>
+        <ion-list lines="none">
+          <ion-item-sliding
+            #sliding
+            *ngFor="let aviso of porGrupo($any(grupo))">
+            <ion-item-options side="end" (ionSwipe)="onSwipe(aviso.id, sliding)">
+              <ion-item-option color="danger" expandable="true" (click)="eliminar(aviso.id, sliding)">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item class="notice-item">
+              <div slot="start" class="notice-icon" [attr.data-tone]="aviso.tono">
+                <ion-icon [name]="aviso.icono"></ion-icon>
+              </div>
+              <ion-label class="ion-text-wrap">
+                <h3>{{ aviso.titulo }}</h3>
+                <p>{{ aviso.detalle }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </section>
+    </ng-container>
+
+    <div *ngIf="avisos.length === 0" class="empty-state">
+      <ion-icon name="notifications-off-outline"></ion-icon>
+      <h2>No tienes avisos</h2>
+      <p>Desliza hacia abajo para restaurar la demostración.</p>
+    </div>
+  </main>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/simulador">
+      <ion-icon name="calculator-outline"></ion-icon><ion-label>Simulador</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/prestamo">
+      <ion-icon name="document-text-outline"></ion-icon><ion-label>Préstamo</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/avisos" selected="true">
+      <ion-icon name="notifications-outline"></ion-icon><ion-label>Avisos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

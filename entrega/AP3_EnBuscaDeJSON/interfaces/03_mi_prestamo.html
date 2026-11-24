@@ -1,0 +1,100 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="principal" aria-label="Abrir menú"></ion-menu-button>
+      <span class="toolbar-brand"><span class="brand-vandi">vandi</span><span class="brand-cash">cash</span></span>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="page-shell">
+    <section class="page-heading">
+      <p class="eyebrow">PRÉSTAMOS</p>
+      <h1>Mi préstamo</h1>
+      <p>VC-2048 · Quincenal</p>
+    </section>
+
+    <ion-card class="balance-card">
+      <ion-card-header>
+        <ion-card-subtitle>Balance pendiente</ion-card-subtitle>
+        <ion-card-title>RD$ 14,666.64</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>4 de 12 cuotas pagadas · Al día</ion-card-content>
+    </ion-card>
+
+    <section class="schedule-section">
+      <h2>Calendario de cuotas</h2>
+      <p class="gesture-hint">Mantén presionada una cuota para ver opciones.</p>
+      <ion-list lines="none">
+        <ion-item
+          *ngFor="let cuota of cuotas; let i = index"
+          #longPressTarget
+          class="payment-item"
+          [class.long-press-target]="i === 1">
+          <div slot="start" class="payment-icon" [attr.data-state]="cuota.estado">
+            <ion-icon [name]="cuota.icono"></ion-icon>
+          </div>
+          <ion-label>
+            <h3>{{ cuota.numero }} · {{ cuota.fecha }}</h3>
+            <p>{{ cuota.detalle }}</p>
+          </ion-label>
+          <ion-note slot="end" [attr.data-state]="cuota.estado">{{ cuota.estado }}</ion-note>
+        </ion-item>
+      </ion-list>
+    </section>
+
+    <ion-card class="receipt-card" *ngIf="mostrarComprobante">
+      <ion-card-header>
+        <ion-card-subtitle>COMPROBANTE DE EJEMPLO</ion-card-subtitle>
+        <ion-card-title>Último pago validado</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div
+          class="receipt-viewport"
+          (pointerdown)="onPointerDown($event)"
+          (pointermove)="onPointerMove($event)"
+          (pointerup)="onPointerUp($event)"
+          (pointercancel)="onPointerUp($event)">
+          <img
+            #receiptImage
+            src="assets/comprobante-ejemplo.svg"
+            alt="Comprobante ilustrativo de pago, sin validez comercial"
+            draggable="false" />
+        </div>
+        <div class="zoom-caption">
+          <span><ion-icon name="resize-outline"></ion-icon> Pellizca con dos dedos para ampliar</span>
+          <strong>{{ escala | number:'1.1-1' }}×</strong>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </main>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="page-fab">
+    <ion-fab-button size="small" aria-label="Opciones del comprobante">
+      <ion-icon name="image-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light" aria-label="Restablecer zoom" (click)="restablecerZoom()">
+        <ion-icon name="contract-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" aria-label="Menú contextual" (click)="mostrarMenuContextual()">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/simulador">
+      <ion-icon name="calculator-outline"></ion-icon><ion-label>Simulador</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/prestamo" selected="true">
+      <ion-icon name="document-text-outline"></ion-icon><ion-label>Préstamo</ion-label>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/avisos">
+      <ion-icon name="notifications-outline"></ion-icon><ion-label>Avisos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

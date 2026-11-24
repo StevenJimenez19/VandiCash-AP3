@@ -34,4 +34,139 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+/* El proyecto usa un tema claro fijo para mantener la presentación de Figma. */
+
+:root {
+  --ion-font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ion-color-primary: #17785d;
+  --ion-color-primary-rgb: 23, 120, 93;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #146a52;
+  --ion-color-primary-tint: #2e866d;
+}
+
+html,
+body {
+  background: #f8f7f2;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ion-content,
+ion-toolbar,
+ion-footer,
+ion-tab-bar {
+  --background: #f8f7f2;
+}
+
+ion-content {
+  --overflow: auto;
+  overflow-x: clip;
+}
+
+ion-toolbar {
+  --color: #17352f;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+ion-menu-button {
+  --color: #17785d;
+}
+
+ion-tab-bar {
+  --border: 0;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 68px;
+  box-shadow: 0 -8px 24px rgb(23 53 47 / 5%);
+}
+
+ion-tab-button {
+  --background: #f8f7f2;
+  --color: #81908b;
+  --color-selected: #17785d;
+  min-width: 0;
+  font-size: 0.72rem;
+}
+
+.brand-vandi {
+  color: #14765c;
+  font-weight: 700;
+}
+
+.brand-cash {
+  color: #18342f;
+  font-weight: 400;
+}
+
+.toolbar-brand {
+  margin-left: 8px;
+  font-size: 1.25rem;
+  letter-spacing: -0.04em;
+}
+
+.page-shell {
+  width: min(100vw, 560px);
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 18px 24px 30px;
+}
+
+.page-heading {
+  .eyebrow {
+    margin: 0 0 6px;
+    color: #17785d;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    margin: 0;
+    color: #17352f;
+    font-size: clamp(1.8rem, 8vw, 2.25rem);
+    letter-spacing: -0.035em;
+  }
+
+  p:not(.eyebrow) {
+    margin: 7px 0 0;
+    color: #7b8984;
+    font-size: 0.9rem;
+  }
+}
+
+.primary-action {
+  --background: #17785d;
+  --border-radius: 16px;
+  min-height: 54px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+@media (min-width: 992px) {
+  ion-menu {
+    --width: 280px;
+  }
+
+  .page-shell {
+    padding-top: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

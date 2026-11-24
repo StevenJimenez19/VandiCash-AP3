@@ -1,0 +1,70 @@
+.menu-toolbar {
+  --background: #f8f7f2;
+  --color: #17352f;
+}
+
+.brand-vandi {
+  color: #14765c;
+  font-weight: 700;
+}
+
+.brand-cash {
+  color: #18342f;
+  font-weight: 400;
+}
+
+.menu-content {
+  --background: #f8f7f2;
+}
+
+.menu-intro {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 16px 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #e8f1df;
+  color: #17352f;
+
+  p {
+    margin: 4px 0 0;
+    color: #6f807a;
+    font-size: 0.82rem;
+  }
+}
+
+.menu-logo {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 14px;
+  background: #17785d;
+  color: white;
+  font-weight: 700;
+}
+
+ion-menu ion-list {
+  background: transparent;
+  padding: 8px;
+}
+
+ion-menu ion-item {
+  --background: transparent;
+  --border-radius: 12px;
+  --color: #29433d;
+  margin-bottom: 6px;
+}
+
+.team-note {
+  position: absolute;
+  right: 18px;
+  bottom: 24px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #74847e;
+  font-size: 0.8rem;
+}

@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'VandiCash-AP3',
+  appId: 'edu.uapa.vandicash.ap3',
+  appName: 'VandiCash AP3',
   webDir: 'www'
 };
 

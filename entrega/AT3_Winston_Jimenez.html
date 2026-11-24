@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>AT3 — Winston Jiménez</title>
+  <style>
+    @page { size: A4 landscape; margin: 10mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; color: #12233f; background: #eef3f8; }
+    main { min-height: 190mm; padding: 14mm; background: linear-gradient(135deg, #f8fbff, #edf7f5); }
+    header { display: flex; align-items: end; justify-content: space-between; border-bottom: 4px solid #18a58d; padding-bottom: 7mm; }
+    h1 { margin: 0; font-size: 28px; }
+    header p { margin: 3px 0 0; color: #52637a; }
+    .student { text-align: right; font-size: 13px; }
+    .apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7mm; margin-top: 8mm; }
+    article { background: white; border-radius: 14px; padding: 7mm; border-top: 7px solid #18a58d; box-shadow: 0 5px 18px #17345b18; }
+    article:nth-child(2) { border-color: #3478d4; }
+    article:nth-child(3) { border-color: #d58b27; }
+    h2 { margin: 0 0 5mm; font-size: 22px; }
+    .gesture { margin: 4mm 0; padding-left: 5mm; border-left: 3px solid #dce6ef; }
+    .gesture b { display: block; color: #087e6b; margin-bottom: 1mm; }
+    .relation { margin-top: 8mm; padding: 6mm 8mm; color: white; border-radius: 14px; background: #122f56; display: grid; grid-template-columns: 190px 1fr; gap: 7mm; align-items: center; }
+    .relation h2 { margin: 0; }
+    .relation p { margin: 0; line-height: 1.45; }
+    footer { margin-top: 5mm; text-align: center; color: #607086; font-size: 11px; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>AT3 · Gestos en aplicaciones móviles</h1><p>Mapa visual de 3 aplicaciones y su relación con VandiCash</p></div>
+    <div class="student"><b>Winston Jiménez</b><br>100078281<br>Programación de Dispositivos Móviles</div>
+  </header>
+  <section class="apps">
+    <article>
+      <h2>WhatsApp</h2>
+      <div class="gesture"><b>Swipe para responder</b>Al deslizar un mensaje se prepara una respuesta vinculada a ese contenido.</div>
+      <div class="gesture"><b>Long-press</b>Al mantener presionado un mensaje aparecen acciones como responder, copiar o eliminar.</div>
+    </article>
+    <article>
+      <h2>Google Maps</h2>
+      <div class="gesture"><b>Pinch para zoom</b>Dos dedos acercan o alejan el mapa para cambiar el nivel de detalle.</div>
+      <div class="gesture"><b>Swipe para pan</b>Arrastrar un dedo desplaza el mapa y permite explorar otra zona.</div>
+    </article>
+    <article>
+      <h2>Gmail</h2>
+      <div class="gesture"><b>Swipe lateral</b>Deslizar un correo permite archivarlo o eliminarlo rápidamente.</div>
+      <div class="gesture"><b>Pull-to-refresh</b>Arrastrar la bandeja hacia abajo busca mensajes nuevos y actualiza la lista.</div>
+    </article>
+  </section>
+  <section class="relation">
+    <h2>Aplicación en VandiCash</h2>
+    <p><b>Swipe y pull-to-refresh</b> simplifican la gestión de avisos. <b>Pinch</b> mejora la lectura del comprobante y <b>long-press</b> ofrece acciones de una cuota sin recargar la pantalla. Estos gestos son familiares porque se usan en aplicaciones populares.</p>
+  </section>
+  <footer>Entrega individual · Formato visual de una página</footer>
+</main>
+</body>
+</html>

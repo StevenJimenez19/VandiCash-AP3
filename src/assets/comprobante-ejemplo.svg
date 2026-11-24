@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420" role="img" aria-labelledby="title desc">
+  <title id="title">Comprobante ilustrativo VandiCash</title>
+  <desc id="desc">Documento de ejemplo sin validez comercial para demostrar el gesto de zoom.</desc>
+  <rect width="300" height="420" rx="18" fill="#ffffff"/>
+  <rect x="0" y="0" width="300" height="78" rx="18" fill="#17785d"/>
+  <rect x="0" y="58" width="300" height="20" fill="#17785d"/>
+  <text x="24" y="34" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="700">vandi</text>
+  <text x="86" y="34" fill="#ffffff" font-family="Arial, sans-serif" font-size="24">cash</text>
+  <text x="24" y="58" fill="#d9f2e8" font-family="Arial, sans-serif" font-size="11">COMPROBANTE ILUSTRATIVO</text>
+  <circle cx="150" cy="126" r="28" fill="#e8f1df"/>
+  <path d="M137 126l9 9 18-21" fill="none" stroke="#17785d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="173" text-anchor="middle" fill="#17352f" font-family="Arial, sans-serif" font-size="18" font-weight="700">Pago validado</text>
+  <text x="150" y="204" text-anchor="middle" fill="#17352f" font-family="Arial, sans-serif" font-size="30" font-weight="700">RD$ 1,833.33</text>
+  <line x1="24" y1="232" x2="276" y2="232" stroke="#dfe7df"/>
+  <text x="24" y="264" fill="#71817b" font-family="Arial, sans-serif" font-size="12">Préstamo</text>
+  <text x="276" y="264" text-anchor="end" fill="#17352f" font-family="Arial, sans-serif" font-size="12">VC-2048</text>
+  <text x="24" y="294" fill="#71817b" font-family="Arial, sans-serif" font-size="12">Cuota</text>
+  <text x="276" y="294" text-anchor="end" fill="#17352f" font-family="Arial, sans-serif" font-size="12">04 de 12</text>
+  <text x="24" y="324" fill="#71817b" font-family="Arial, sans-serif" font-size="12">Fecha</text>
+  <text x="276" y="324" text-anchor="end" fill="#17352f" font-family="Arial, sans-serif" font-size="12">15 nov 2026</text>
+  <rect x="24" y="350" width="252" height="42" rx="10" fill="#f3f6f1"/>
+  <text x="150" y="368" text-anchor="middle" fill="#71817b" font-family="Arial, sans-serif" font-size="10">MUESTRA ACADÉMICA</text>
+  <text x="150" y="382" text-anchor="middle" fill="#71817b" font-family="Arial, sans-serif" font-size="10">SIN VALIDEZ COMERCIAL</text>
+</svg>
