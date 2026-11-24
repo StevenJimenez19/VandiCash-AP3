@@ -10,7 +10,7 @@ Proyecto universitario del equipo **En busca de JSON** para Programación de Dis
 
 ## Funcionalidades evaluadas
 
-- Tres interfaces tomadas del proyecto de la Semana 2: **Hagamos números**, **Tus avisos** y **Mi préstamo**.
+- Cinco interfaces del proyecto: **Inicio de sesión**, **Hagamos números**, **Tus avisos**, **Mi préstamo** y **Mi perfil**.
 - Componentes Ionic: `ion-card`, `ion-list`, `ion-item-sliding`, `ion-refresher`, `ion-fab`, `ion-menu` e `ion-split-pane`.
 - Gestos: swipe para eliminar, pull-to-refresh, pinch/zoom y long-press.
 - Menú lateral con encabezado, iconos y navegación.

@@ -6,17 +6,19 @@ Duración objetivo: **2:35**. Al menos un integrante debe aparecer hablando y co
 
 > Somos el equipo En busca de JSON, integrado por Yamely Ovalles, Robinet Rodríguez y Winston Jiménez. Presentamos VandiCash, una aplicación académica de préstamos personales.
 
-## 0:25–1:15 — Tres interfaces
+## 0:25–1:35 — Cinco interfaces
 
+- **Inicio de sesión:** enseñar los campos y pulsar “Entrar”.
 - **Hagamos números:** cambiar monto, plazo y frecuencia; pulsar “Calcular cuota”.
 - **Tus avisos:** enseñar los avisos agrupados y sus componentes Ionic.
 - **Mi préstamo:** enseñar el resumen, el calendario de cuotas y el comprobante.
+- **Mi perfil:** enseñar los datos de ejemplo y la opción de editar.
 
 Narración sugerida:
 
-> Implementamos tres pantallas del boceto de la Semana 2. Cada una integra al menos tres componentes Ionic y mantiene una identidad visual consistente.
+> Implementamos cinco pantallas del proyecto. Cada una integra componentes Ionic y mantiene una identidad visual consistente.
 
-## 1:15–2:15 — Cuatro gestos
+## 1:35–2:30 — Cuatro gestos
 
 - Deslizar un aviso y eliminarlo.
 - Arrastrar hacia abajo para restaurar o actualizar los avisos.
@@ -27,7 +29,7 @@ Narración sugerida:
 
 > Los cuatro gestos tienen una función concreta: gestionar avisos, actualizar información, facilitar la lectura del comprobante y mostrar acciones de una cuota.
 
-## 2:15–2:35 — Menú lateral
+## 2:30–2:50 — Menú lateral
 
 > Finalmente, el menú lateral incluye el nombre y el logo de la aplicación, iconos y navegación hacia las tres pantallas. También usa ion-split-pane para adaptarse a tabletas.
 

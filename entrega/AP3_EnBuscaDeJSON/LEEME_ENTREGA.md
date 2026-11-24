@@ -5,7 +5,7 @@ Aplicación: **VandiCash**
 
 ## Contenido
 
-- `interfaces/`: código HTML y captura de cada una de las tres pantallas.
+- `interfaces/`: código HTML y captura de cada una de las cinco pantallas.
 - `gestos/`: código relacionado, capturas y propósito de los cuatro gestos.
 - `menu/`: código y captura del menú lateral.
 - `ENLACE_GITHUB.txt`: repositorio público del proyecto.

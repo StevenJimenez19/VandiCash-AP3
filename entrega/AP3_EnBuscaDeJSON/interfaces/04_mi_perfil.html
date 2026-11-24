@@ -1,0 +1,72 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="principal" aria-label="Abrir menú"></ion-menu-button>
+      <span class="toolbar-brand"><span class="brand-vandi">vandi</span><span class="brand-cash">cash</span></span>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content pullingText="Desliza para actualizar" refreshingText="Actualizando perfil..."></ion-refresher-content>
+  </ion-refresher>
+
+  <main class="page-shell profile-shell">
+    <section class="page-heading">
+      <p class="eyebrow">CUENTA</p>
+      <h1>Mi perfil</h1>
+      <p>{{ ultimaActualizacion }}</p>
+    </section>
+
+    <ion-card class="identity-card">
+      <ion-card-content>
+        <div class="avatar">UP</div>
+        <div>
+          <h2>Usuario de prueba</h2>
+          <p>Cliente VC-2048</p>
+          <ion-badge color="success">Cuenta activa</ion-badge>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <section class="profile-section">
+      <h2>Información personal</h2>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon slot="start" name="mail-outline"></ion-icon>
+          <ion-label><p>Correo electrónico</p><h3>cliente@ejemplo.com</h3></ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="call-outline"></ion-icon>
+          <ion-label><p>Teléfono</p><h3>(809) 555-0148</h3></ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="location-outline"></ion-icon>
+          <ion-label><p>Ciudad</p><h3>Santo Domingo</h3></ion-label>
+        </ion-item>
+      </ion-list>
+    </section>
+
+    <ion-card class="security-card">
+      <ion-item lines="none" button="true" detail="true" (click)="editar()">
+        <ion-icon slot="start" name="shield-checkmark-outline"></ion-icon>
+        <ion-label><h3>Seguridad de la cuenta</h3><p>Contraseña y acceso</p></ion-label>
+      </ion-item>
+    </ion-card>
+  </main>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="page-fab">
+    <ion-fab-button size="small" aria-label="Editar perfil" (click)="editar()">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/simulador"><ion-icon name="calculator-outline"></ion-icon><ion-label>Simulador</ion-label></ion-tab-button>
+    <ion-tab-button routerLink="/prestamo"><ion-icon name="document-text-outline"></ion-icon><ion-label>Préstamo</ion-label></ion-tab-button>
+    <ion-tab-button routerLink="/avisos"><ion-icon name="notifications-outline"></ion-icon><ion-label>Avisos</ion-label></ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

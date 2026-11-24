@@ -56,6 +56,15 @@ async function screenshot(relativePath) {
   await writeFile(path.join(output, relativePath), Buffer.from(data, 'base64'));
 }
 
+await navigate('login');
+await screenshot('interfaces/00_inicio_sesion.png');
+await evaluate(`(() => { const host=document.querySelector('.primary-action'); const button=host?.shadowRoot?.querySelector('button'); (button || host)?.click(); })()`);
+await wait(700);
+const loginRoute = await evaluate(`location.pathname`);
+if (loginRoute.result.value !== '/simulador') {
+  throw new Error(`El botón de acceso no navegó al simulador: ${loginRoute.result.value}`);
+}
+
 await navigate('simulador');
 await screenshot('interfaces/01_hagamos_numeros.png');
 
@@ -77,6 +86,15 @@ await wait(900);
 
 await navigate('prestamo');
 await screenshot('interfaces/03_mi_prestamo.png');
+
+await navigate('perfil');
+await screenshot('interfaces/04_mi_perfil.png');
+const profileComponents = await evaluate(`({cards: document.querySelectorAll('ion-card').length, lists: document.querySelectorAll('ion-list').length, refreshers: document.querySelectorAll('ion-refresher').length, fabs: document.querySelectorAll('ion-fab').length})`);
+if (Object.values(profileComponents.result.value).some(value => value < 1)) {
+  throw new Error('La pantalla de perfil no contiene todos los componentes Ionic previstos.');
+}
+
+await navigate('prestamo');
 await evaluate(`document.querySelector('.receipt-card')?.scrollIntoView({block:'center'})`);
 await wait(300);
 const receipt = await evaluate(`(() => { const r=document.querySelector('.receipt-viewport img')?.getBoundingClientRect(); return r ? {x:r.x,y:r.y,w:r.width,h:r.height} : null; })()`);

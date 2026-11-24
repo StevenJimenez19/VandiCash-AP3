@@ -1,0 +1,57 @@
+<ion-content class="login-content">
+  <main class="login-shell">
+    <section class="login-brand" aria-label="VandiCash">
+      <div class="login-logo">VC</div>
+      <h1><span class="brand-vandi">vandi</span><span class="brand-cash">cash</span></h1>
+      <p>Préstamos simples, desde tu móvil.</p>
+    </section>
+
+    <ion-card class="login-card">
+      <ion-card-header>
+        <ion-card-subtitle>BIENVENIDO</ion-card-subtitle>
+        <ion-card-title>Inicia sesión</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="none" class="login-list">
+          <ion-item>
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+            <ion-input
+              label="Correo electrónico"
+              labelPlacement="stacked"
+              type="email"
+              [(ngModel)]="correo">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+            <ion-input
+              label="Contraseña"
+              labelPlacement="stacked"
+              [type]="mostrarClave ? 'text' : 'password'"
+              [(ngModel)]="clave">
+            </ion-input>
+            <ion-button fill="clear" slot="end" aria-label="Mostrar u ocultar contraseña" (click)="mostrarClave = !mostrarClave">
+              <ion-icon [name]="mostrarClave ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+
+        <div class="remember-row">
+          <ion-checkbox [(ngModel)]="recordar">Recordarme</ion-checkbox>
+          <ion-button fill="clear" size="small" (click)="ayuda()">¿Necesitas ayuda?</ion-button>
+        </div>
+
+        <ion-button expand="block" class="primary-action" (click)="entrar()">
+          Entrar <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+        <p class="academic-note">Acceso de demostración · Proyecto universitario</p>
+      </ion-card-content>
+    </ion-card>
+  </main>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="login-fab">
+    <ion-fab-button size="small" aria-label="Ayuda" (click)="ayuda()">
+      <ion-icon name="help-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
