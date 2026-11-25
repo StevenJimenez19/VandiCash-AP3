@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ActionSheetController, Gesture, GestureController, ToastController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 interface Cuota {
   numero: string;
@@ -16,7 +17,7 @@ interface Cuota {
   standalone: false,
 })
 export class PrestamoPage implements AfterViewInit, OnDestroy {
-  @ViewChild('longPressTarget', { read: ElementRef }) longPressTarget!: ElementRef<HTMLElement>;
+  @ViewChildren('longPressTarget', { read: ElementRef }) longPressTargets!: QueryList<ElementRef<HTMLElement>>;
   @ViewChild('receiptImage', { read: ElementRef }) receiptImage!: ElementRef<HTMLImageElement>;
 
   cuotas: Cuota[] = [
@@ -27,9 +28,11 @@ export class PrestamoPage implements AfterViewInit, OnDestroy {
   escala = 1;
   mostrarComprobante = true;
 
-  private longPressGesture?: Gesture;
+  private longPressGestures: Gesture[] = [];
+  private longPressChanges?: Subscription;
+  private pressTimers = new Set<ReturnType<typeof setTimeout>>();
+  private cuotaSeleccionada?: Cuota;
   private pinchGesture?: Gesture;
-  private pressTimer?: ReturnType<typeof setTimeout>;
   private pointers = new Map<number, PointerEvent>();
   private distanciaInicial = 0;
   private escalaInicial = 1;
@@ -42,31 +45,57 @@ export class PrestamoPage implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.configurarLongPress();
+    this.longPressChanges = this.longPressTargets.changes.subscribe(() => this.configurarLongPress());
     this.configurarPinchSegunGuia();
   }
 
   ngOnDestroy(): void {
-    clearTimeout(this.pressTimer);
-    this.longPressGesture?.destroy();
+    this.longPressChanges?.unsubscribe();
+    this.limpiarLongPress();
     this.pinchGesture?.destroy();
   }
 
   private configurarLongPress(): void {
-    this.longPressGesture = this.gestureCtrl.create({
-      el: this.longPressTarget.nativeElement,
-      threshold: 0,
-      gestureName: 'long-press-cuota',
-      onStart: () => {
-        this.pressTimer = setTimeout(() => void this.mostrarMenuContextual(), 800);
-      },
-      onMove: ev => {
-        if (Math.abs(ev.deltaX) > 10 || Math.abs(ev.deltaY) > 10) {
-          clearTimeout(this.pressTimer);
+    this.limpiarLongPress();
+    this.longPressGestures = this.longPressTargets.map((target, index) => {
+      let pressTimer: ReturnType<typeof setTimeout> | undefined;
+      const cancelar = () => {
+        if (pressTimer !== undefined) {
+          clearTimeout(pressTimer);
+          this.pressTimers.delete(pressTimer);
+          pressTimer = undefined;
         }
-      },
-      onEnd: () => clearTimeout(this.pressTimer),
+      };
+      const gesture = this.gestureCtrl.create({
+        el: target.nativeElement,
+        threshold: 0,
+        gestureName: 'long-press-cuota',
+        onStart: () => {
+          cancelar();
+          const cuota = this.cuotas[index];
+          pressTimer = setTimeout(() => {
+            cancelar();
+            void this.mostrarMenuContextual(cuota);
+          }, 800);
+          this.pressTimers.add(pressTimer);
+        },
+        onMove: ev => {
+          if (Math.abs(ev.deltaX) > 10 || Math.abs(ev.deltaY) > 10) {
+            cancelar();
+          }
+        },
+        onEnd: cancelar,
+      });
+      gesture.enable();
+      return gesture;
     });
-    this.longPressGesture.enable();
+  }
+
+  private limpiarLongPress(): void {
+    this.pressTimers.forEach(timer => clearTimeout(timer));
+    this.pressTimers.clear();
+    this.longPressGestures.forEach(gesture => gesture.destroy());
+    this.longPressGestures = [];
   }
 
   private configurarPinchSegunGuia(): void {
@@ -120,13 +149,14 @@ export class PrestamoPage implements AfterViewInit, OnDestroy {
     this.aplicarEscala(1);
   }
 
-  async mostrarMenuContextual(): Promise<void> {
+  async mostrarMenuContextual(cuota = this.cuotaSeleccionada): Promise<void> {
+    this.cuotaSeleccionada = cuota;
     const menu = await this.actionSheetCtrl.create({
-      header: 'Opciones de la cuota',
-      subHeader: 'Menú abierto mediante long-press',
+      header: cuota ? `Opciones de ${cuota.numero}` : 'Opciones de la cuota',
+      subHeader: cuota ? `${cuota.fecha} · ${cuota.estado}` : 'Menú abierto mediante long-press',
       buttons: [
-        { text: 'Ver detalles', icon: 'eye-outline', handler: () => void this.mensaje('Detalle de cuota consultado') },
-        { text: 'Recordarme después', icon: 'alarm-outline', handler: () => void this.mensaje('Recordatorio ilustrativo creado') },
+        { text: 'Ver detalles', icon: 'eye-outline', handler: () => void this.mensaje(cuota ? `${cuota.numero} · ${cuota.fecha} · ${cuota.detalle} · ${cuota.estado}` : 'Detalle de cuota consultado') },
+        { text: 'Recordarme después', icon: 'alarm-outline', handler: () => void this.mensaje(cuota ? `Recordatorio ilustrativo creado para ${cuota.numero}` : 'Recordatorio ilustrativo creado') },
         { text: 'Cancelar', role: 'cancel', icon: 'close-outline' },
       ],
     });
