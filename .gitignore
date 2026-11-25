@@ -45,11 +45,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+/.vscode/
 .history/*
 
 
@@ -72,3 +68,10 @@ Thumbs.db
 # Entrega individual AT3 (no pertenece al repositorio grupal AP3)
 /entrega/AT3_*
 /scripts/print-at3.mjs
+
+# Auxiliares locales que no forman parte del repositorio de entrega
+/scripts/capture-evidence.mjs
+/entrega/AP3_EnBuscaDeJSON.zip
+/entrega/AP3_EnBuscaDeJSON/ENLACE_GITHUB.txt
+/entrega/AP3_EnBuscaDeJSON/GUION_VIDEO.md
+/entrega/AP3_EnBuscaDeJSON/LEEME_ENTREGA.md
